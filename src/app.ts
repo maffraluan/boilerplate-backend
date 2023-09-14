@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import express, { Application } from 'express'
 import 'express-async-errors'
-import Database from './config/database'
+import Database from './config-database/database'
 
 import TodoRouter from './presentation/routes/todo/todo.router'
 
