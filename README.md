@@ -1,6 +1,7 @@
 ## How to run:
 
 ```sh
+npm install -g pnpm || npm install -g @pnpm/exe
 pnpm install && pnpm run start:dev
 ```
 
