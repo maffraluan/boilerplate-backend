@@ -1,6 +1,7 @@
 import 'reflect-metadata'
-import express, { Application } from 'express'
 import 'express-async-errors'
+import express, { Application } from 'express'
+import cors from 'cors'
 import Database from './config-database/database'
 
 import TodoRouter from './presentation/routes/todo/todo.router'
@@ -15,9 +16,16 @@ export class App {
     this.routes()
   }
 
+  protected corsConfig = {
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    optionsSuccessStatus: 204,
+  }
+
   protected plugins(): void {
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: true }))
+    this.app.use(cors(this.corsConfig))
   }
 
   protected databaseSync(): void {
