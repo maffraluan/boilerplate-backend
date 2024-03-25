@@ -13,7 +13,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "strictNullChecks": true,
     "noImplicitAny": true,
     "strictFunctionTypes": true,
@@ -22,8 +22,19 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
-    "rootDirs": ["./src"],
     "inlineSources": true,
-    "sourceRoot": "/"
+    "importHelpers": false,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],
+      "@application/*": ["application/*"],
+      "@database/*": ["config-database/*"],
+      "@domain/*": ["domain/*"],
+      "@helpers/*": ["helpers/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@presentation/*": ["presentation/*"],
+      "@utils/*": ["utils/*"]
+    }
   }
 }
