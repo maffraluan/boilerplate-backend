@@ -1,6 +1,5 @@
 import { Sequelize } from 'sequelize-typescript'
 import * as dotenv from 'dotenv'
-import { TodoListModel } from '../domain/models/todo-list/todo-list'
 
 dotenv.config()
 
@@ -25,7 +24,7 @@ class Database {
       host: this.POSTGRES_HOST,
       port: +this.POSTGRES_PORT,
       dialect: 'postgres',
-      models: [TodoListModel],
+      models: [],
     })
 
     await this.sequelize
