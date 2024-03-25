@@ -1,9 +1,15 @@
 {
+  "include": ["src/**/*.ts", "./@types/*.d.ts"],
+  "exclude": ["node_modules", "dist"],
   "compilerOptions": {
-    "target": "es2018",
+    "types": ["node", "jest"],
+    "typeRoots": ["node_modules/@types"],
+    "target": "es2019",
     "module": "commonjs",
     "allowJs": true,
     "strict": true,
+    "pretty": true,
+    "sourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,8 +20,10 @@
     "noUnusedLocals": true,
     "strictPropertyInitialization": false,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "rootDirs": ["./src"],
+    "inlineSources": true,
+    "sourceRoot": "/"
+  }
 }
