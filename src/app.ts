@@ -1,16 +1,19 @@
 import cluster from 'cluster'
 import cors from 'cors'
-import express, { Application, Request, Response } from 'express'
+import express, { Application } from 'express'
 import 'express-async-errors'
 import morgan from 'morgan'
 import http from 'node:http'
 import { cpus } from 'os'
 import 'reflect-metadata'
+import './domain/container/index'
 // import Database from './config-database/database'
+import { AppRouting } from './app-routing'
 
 export class App {
   private static instance: App
   private app: Application
+
   private readonly port = process.env.PORT || 3000
 
   private readonly cpuLength = cpus().length
@@ -19,7 +22,7 @@ export class App {
     this.app = express()
     //this.databaseSync()
     this.plugins()
-    this.routes()
+    this.setupRoutes()
   }
 
   private corsConfig = {
@@ -48,17 +51,11 @@ export class App {
   //   db.sequelize?.sync()
   // }
 
-  protected routes(): void {
-    this.app.get('/api/v1/todo', (req: Request, res: Response) => {
-      setTimeout(() => {
-        res.status(200).send({ message: `first route` })
-      }, 9000)
-    })
-
-    this.app.get('/some', (req: Request, res: Response) => {
-      setTimeout(() => {
-        res.status(200).send({ message: 'second route' })
-      }, 12000)
+  private setupRoutes(): void {
+    const appRouting = new AppRouting()
+    const routes = appRouting.getRoutes()
+    routes.forEach((route) => {
+      this.app.use(route.path, route.router)
     })
   }
 
