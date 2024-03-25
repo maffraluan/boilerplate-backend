@@ -16,6 +16,7 @@ export class ExampleRouter implements IRoutes {
   }
 
   private initializeRoutes() {
-    this.router.get('/', this.controller.getFoo)
+    this.router.get('/foo', this.controller.getFoo)
+    this.router.get('/bar', this.controller.getBar)
   }
 }
