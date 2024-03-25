@@ -1,0 +1,6 @@
+if [ -t 0 ];
+then
+  exec < /dev/tty && [ -z "$(cat ${1})" ] && pnpm exec cz --hook || true
+else
+  [ -z "$(cat ${1})" ] && pnpm exec cz --hook || true
+fi
