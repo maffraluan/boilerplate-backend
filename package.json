@@ -9,10 +9,10 @@
     }
   },
   "scripts": {
-    "compile": "tsc",
+    "compile": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
     "lint": "eslint src --ignore-path .gitignore --ext=.ts, .",
     "lint:fix": "pnpm run lint -- --fix",
-    "dev": "ts-node-dev --transpile-only --max-old-space-size=8000 src/app.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --transpile-only --max-old-space-size=8000 src/app.ts",
     "test": "jest --colors --passWithNoTests",
     "migration:generate": "sequelize db:migrate",
     "prepare": "husky"
@@ -59,6 +59,8 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.8",
+    "tsconfig-paths": "^4.2.0",
     "tsyringe": "^4.8.0",
     "typescript": "^5.4.3"
   },
